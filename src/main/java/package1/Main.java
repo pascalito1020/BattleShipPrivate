@@ -23,7 +23,7 @@ public class Main {
     }
     game.enemyMove();
     if(game.getEnemyHit()==3){
-        System.out.println("You lost :(");
+        System.out.println("You lost!!!");
         System.exit(0);
     }
 }
