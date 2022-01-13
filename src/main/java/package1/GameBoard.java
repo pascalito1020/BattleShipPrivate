@@ -6,26 +6,27 @@ import java.util.Scanner;
 public class GameBoard {
 
     public int[][] enemyBoard = new int[10][10];
+
     public int[][] playerBoard = new int[10][10];
+
+    public int[][] consoleBoard = new int[10][10]; /** Array für die Anzeige der getroffenen Treffer **/
+
     int playerHit=0;
     int enemyHit=0;
-
     int water = 0;
     int ship = 1;
+
     public int shipNumber = 5;
 
     /** PlayerBoard**/
 
-    public int[][] createGameBoard() {
+    public void createGameBoard() {
 
 
         for (int row = 0; row < playerBoard.length; row++) {
 
-            System.out.println(" ");
-
             for (int col = 0; col < playerBoard.length; col++) {
 
-                System.out.print(water + " ");
                 playerBoard[row][col] = water;
             }
 
@@ -33,23 +34,23 @@ public class GameBoard {
 
         System.out.println("");
 
-        return playerBoard;
-    }
+    } /** Methode um PlayerBoard zu befüllen **/
 
-    public void placeShips(int[][] playerBoard) {
+    public void placeShips() {
 
         int y1;
         int x1;
-        this.playerBoard = playerBoard;
         int shipLength;
         char choose;
         int counter = 5;
 
+        int []counterArray = new int[]{1, 1, 2, 1};
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("You are able to place 1x 5 SHIP, 1x 4 SHIP, 2x 3 SHIP and 1x 2 SHIP");
-
         while (counter > 0) {
+
+            System.out.println("You are able to place "+ counterArray[0] +"x 5 SHIP, " + counterArray[1] +"x 4 SHIP, "+ counterArray[2] +"x 3 SHIP and " + counterArray[3] +"x 2 SHIP");
 
             System.out.println("Ships left " + shipNumber);
             System.out.println("Choose your START POSITION! 10x10 FIELD");
@@ -62,6 +63,16 @@ public class GameBoard {
             System.out.println("Choose Ship length (5,4,3,2)");
             shipLength = scanner.nextInt();
 
+            if(shipLength == 5){    /** Counter für den Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
+                counterArray[0]--;
+            }else if(shipLength == 4) {
+                counterArray[1]--;
+            }else if(shipLength == 3) {
+                counterArray[2]--;
+            }else if(shipLength == 2) {
+                counterArray[3]--;
+            }
+
             System.out.println("Choose direction(u, d, l, r)");
             choose = scanner.next().charAt(0);
 
@@ -70,6 +81,15 @@ public class GameBoard {
                     if (y1 + 1 - shipLength < 0) {
                         System.out.println("Cant be placed like that!");
                         playerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
                         break;
                     }
                     for (int i = 0; i < shipLength; i++) {
@@ -86,6 +106,15 @@ public class GameBoard {
                     if (y1 - 1 + shipLength > 9) {
                         System.out.println("Cant be placed like that!");
                         playerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
                         break;
                     }
                     for (int i = 0; i < shipLength; i++) {
@@ -102,6 +131,15 @@ public class GameBoard {
                     if (x1 + 1 - shipLength < 0) {
                         System.out.println("Cant be placed like that!");
                         playerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
                         break;
                     }
                     for (int i = 0; i < shipLength; i++) {
@@ -118,6 +156,15 @@ public class GameBoard {
                     if (x1 - 1 + shipLength > 9) {
                         System.out.println("Cant be placed like that!");
                         playerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
                         break;
                     }
 
@@ -136,14 +183,19 @@ public class GameBoard {
 
         }
 
-    }
+    } /** Methode für das Befüllen des PlayerBoard Arrays mit eigenen Schiffen **/
 
     public void showGameBoard() {
+
+        int c = 0;
+
+        System.out.println("Y/X 0 1 2 3 4 5 6 7 8 9");
 
         for (int row = 0; row < playerBoard.length; row++) {
 
             System.out.println(" ");
-
+            System.out.print(c+":  ");
+            c++;
             for (int col = 0; col < playerBoard.length; col++) {
 
                 System.out.print(playerBoard[row][col] + " ");
@@ -154,7 +206,7 @@ public class GameBoard {
         }
         System.out.println("");
 
-    }
+    } /** Gibt das PlayerBoard aus **/
 
     /** EnemyBoard **/
 
@@ -257,7 +309,7 @@ public class GameBoard {
 
 
         }
-    }
+    }  /** Methode für die zufällige Befüllung des EnemyBoard (Schiffe werden zufällig verteilt in das Array geschrieben **/
 
     public void showEnemyBoard() {
 
@@ -275,27 +327,57 @@ public class GameBoard {
         System.out.println("");
 
 
-    }
+    } /** Gibt EnemyBoard aus **/
+
+    /** game move methods **/
 
     public void playerMove() {
+
         int playerMoveY;
         int playerMoveX;
+
         for (int tryagain = 0; tryagain < 1; tryagain++) {
+
             Scanner scanner = new Scanner(System.in);
+
             do {
                 System.out.println("Make your move! Enter y coordinate 0-9.");
                 playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
+
             do {
                 System.out.println("Make your move! Enter X coordinate 0-9.");
                 playerMoveX = getInput();
             } while( !isValidCoordinate(playerMoveX));
+
             if (enemyBoard[playerMoveY][playerMoveX] == 1) {
+
+                consoleBoard[playerMoveY][playerMoveX] = 1;
+                for(int row = 0; row < consoleBoard.length; row++) { /** Schleife für die Anzeige der getroffenen Treffer als Array **/
+
+                    System.out.println("");
+
+                    for (int col = 0; col < consoleBoard.length; col++) {
+
+                        System.out.print(consoleBoard[row][col] + " ");
+
+                    }
+
+                }
+                System.out.println("");
+
                 System.out.println("HIT!!!");
+
                 playerHit++;
+
+                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
+
                 if(playerHit==3)break;
+
                 tryagain--;
+
             }
+
             if (enemyBoard[playerMoveY][playerMoveX] == 0) {
                 System.out.println("No hit.");
             }
@@ -303,13 +385,16 @@ public class GameBoard {
     }
 
     public void enemyMove(){
+
         for (int tryagain = 0; tryagain < 1; tryagain++) {
             Random enemyTry = new Random();
             int enemyMoveY = enemyTry.nextInt(9);
             int enemyMoveX = enemyTry.nextInt(9);
+
             if (playerBoard[enemyMoveY][enemyMoveX] == 1) {
                 System.out.println("You got hit!");
                 enemyHit++;
+                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
                 if(enemyHit==3)break;
                 tryagain--;
             }
@@ -320,6 +405,8 @@ public class GameBoard {
         }
 
     }
+
+    /** Getter **/
 
     private boolean isValidCoordinate(int userInput){
         if (userInput > 9 || userInput < 0){
@@ -336,6 +423,7 @@ public class GameBoard {
             num = scanner.nextInt();
         } catch (Exception e) {
             System.out.println("Invalid input, please try again.\n" + e);
+
             getInput();
         }
         return num;

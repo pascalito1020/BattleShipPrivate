@@ -7,36 +7,31 @@ public class Main {
 
         GameBoard game = new GameBoard();
 
-
-        System.out.println("Test, seht ihr das?");
-        System.out.println("Omg es geht");
-
-      //  game.createGameBoard();
-
-
-      //  game.placeShips(game.playerBoard);
-
+        game.createGameBoard();
+        game.showGameBoard();
+        game.placeShips();
         game.createEnemyBoard();
-
         game.showEnemyBoard();
 
-    while(true) {
 
-    game.playerMove();
+        while (true) {
 
-    if(game.getPlayerHit()==3){
-        System.out.println("You won!!!");
-        System.exit(0);
-    }
+            game.playerMove();
 
+            if (game.getPlayerHit() == 3) {
+                System.out.println("You won!!!");
+                System.exit(0);
+            }
 
-    game.enemyMove();
-    if(game.getEnemyHit()==3){
-        System.out.println("You lost!!!");
-        System.exit(0);
+            game.enemyMove();
 
+            if (game.getEnemyHit() == 3) {
+                System.out.println("You lost!!!");
+                System.exit(0);
 
-    }
-}
+            }
+
+        }
+
     }
 }
