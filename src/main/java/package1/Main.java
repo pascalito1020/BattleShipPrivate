@@ -7,7 +7,11 @@ public class Main {
 
         GameBoard game = new GameBoard();
 
-     //   game.createGameBoard();
+
+        System.out.println("Test, seht ihr das?");
+
+      //  game.createGameBoard();
+
 
       //  game.placeShips(game.playerBoard);
 
@@ -16,15 +20,21 @@ public class Main {
         game.showEnemyBoard();
 
     while(true) {
+
     game.playerMove();
+
     if(game.getPlayerHit()==3){
         System.out.println("You won!!!");
         System.exit(0);
     }
+
+
     game.enemyMove();
     if(game.getEnemyHit()==3){
         System.out.println("You lost!!!");
         System.exit(0);
+
+
     }
 }
     }

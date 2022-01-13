@@ -10,7 +10,6 @@ public class GameBoard {
     int playerHit=0;
     int enemyHit=0;
 
-
     int water = 0;
     int ship = 1;
     public int shipNumber = 5;
@@ -321,6 +320,7 @@ public class GameBoard {
         }
 
     }
+
     private boolean isValidCoordinate(int userInput){
         if (userInput > 9 || userInput < 0){
             System.out.println("Try again");
@@ -348,4 +348,5 @@ public class GameBoard {
     public int getEnemyHit() {
         return enemyHit;
     }
+
 }
