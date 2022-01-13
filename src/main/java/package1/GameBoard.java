@@ -7,6 +7,8 @@ public class GameBoard {
 
     public int[][] enemyBoard = new int[10][10];
     public int[][] playerBoard = new int[10][10];
+    int playerHit=0;
+    int enemyHit=0;
 
 
     int water = 0;
@@ -276,5 +278,58 @@ public class GameBoard {
 
     }
 
+    public void playerMove() {
+        int playerMoveY;
+        for (int tryagain = 0; tryagain < 1; tryagain++) {
+            Scanner scanner = new Scanner(System.in);
+            do {
+                System.out.println("Make your move! Enter y coordinate 0-9.");
+                playerMoveY = scanner.nextInt();
+            } while( !isValidCoordinate(playerMoveY));
+            System.out.println("Make your move! Enter X coordinate 0-9.");
+            int playerMoveX = scanner.nextInt();
+            if (enemyBoard[playerMoveY][playerMoveX] == 1) {
+                System.out.println("HIT!!!");
+                playerHit++;
+                if(playerHit==3)break;
+                tryagain--;
+            }
+            if (enemyBoard[playerMoveY][playerMoveX] == 0) {
+                System.out.println("No hit.");
+            }
+        }
+    }
+    private boolean isValidCoordinate(int playerMoveY){
+        if (playerMoveY > 9 || playerMoveY < 0){
+            System.out.println("Try again");
+            return false;
+        }
+        else return true;
+    }
 
+    public void enemyMove(){
+        for (int tryagain = 0; tryagain < 1; tryagain++) {
+            Random enemyTry = new Random();
+            int enemyMoveY = enemyTry.nextInt(9);
+            int enemyMoveX = enemyTry.nextInt(9);
+            if (playerBoard[enemyMoveY][enemyMoveX] == 1) {
+                System.out.println("You got hit!");
+                enemyHit++;
+                if(enemyHit==3)break;
+                tryagain--;
+            }
+            if (playerBoard[enemyMoveY][enemyMoveX] == 0) {
+                System.out.println("You did not get hit.");
+            }
+
+        }
+    }
+
+    public int getPlayerHit() {
+        return playerHit;
+    }
+
+    public int getEnemyHit() {
+        return enemyHit;
+    }
 }

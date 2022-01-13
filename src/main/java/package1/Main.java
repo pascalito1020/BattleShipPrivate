@@ -15,10 +15,17 @@ public class Main {
 
         game.showEnemyBoard();
 
-
-
-
-
-
+    while(true) {
+    game.playerMove();
+    if(game.getPlayerHit()==3){
+        System.out.println("You won!!!");
+        System.exit(0);
+    }
+    game.enemyMove();
+    if(game.getEnemyHit()==3){
+        System.out.println("You lost :(");
+        System.exit(0);
+    }
+}
     }
 }
