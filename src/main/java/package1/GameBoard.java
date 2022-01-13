@@ -299,8 +299,8 @@ public class GameBoard {
             }
         }
     }
-    private boolean isValidCoordinate(int playerMoveY){
-        if (playerMoveY > 9 || playerMoveY < 0){
+    private boolean isValidCoordinate(int userInput){
+        if (userInput > 9 || userInput < 0){
             System.out.println("Try again");
             return false;
         }
