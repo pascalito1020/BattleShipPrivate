@@ -280,14 +280,17 @@ public class GameBoard {
 
     public void playerMove() {
         int playerMoveY;
+        int playerMoveX;
         for (int tryagain = 0; tryagain < 1; tryagain++) {
             Scanner scanner = new Scanner(System.in);
             do {
                 System.out.println("Make your move! Enter y coordinate 0-9.");
-                playerMoveY = scanner.nextInt();
+                playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
-            System.out.println("Make your move! Enter X coordinate 0-9.");
-            int playerMoveX = scanner.nextInt();
+            do {
+                System.out.println("Make your move! Enter X coordinate 0-9.");
+                playerMoveX = getInput();
+            } while( !isValidCoordinate(playerMoveX));
             if (enemyBoard[playerMoveY][playerMoveX] == 1) {
                 System.out.println("HIT!!!");
                 playerHit++;
@@ -298,13 +301,6 @@ public class GameBoard {
                 System.out.println("No hit.");
             }
         }
-    }
-    private boolean isValidCoordinate(int userInput){
-        if (userInput > 9 || userInput < 0){
-            System.out.println("Try again");
-            return false;
-        }
-        else return true;
     }
 
     public void enemyMove(){
@@ -323,6 +319,26 @@ public class GameBoard {
             }
 
         }
+
+    }
+    private boolean isValidCoordinate(int userInput){
+        if (userInput > 9 || userInput < 0){
+            System.out.println("Try again");
+            return false;
+        }
+        else return true;
+    }
+
+    public int getInput() {
+        int num = 0;
+        Scanner scanner = new Scanner(System.in);
+        try {
+            num = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Invalid input, please try again.\n" + e);
+            getInput();
+        }
+        return num;
     }
 
     public int getPlayerHit() {

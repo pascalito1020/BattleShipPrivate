@@ -7,9 +7,9 @@ public class Main {
 
         GameBoard game = new GameBoard();
 
-        game.createGameBoard();
+     //   game.createGameBoard();
 
-        game.placeShips(game.playerBoard);
+      //  game.placeShips(game.playerBoard);
 
         game.createEnemyBoard();
 
