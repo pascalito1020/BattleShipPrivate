@@ -9,6 +9,7 @@ public class Main {
 
 
         System.out.println("Test, seht ihr das?");
+        System.out.println("Omg es geht");
 
       //  game.createGameBoard();
 
