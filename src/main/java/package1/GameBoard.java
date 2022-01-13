@@ -18,6 +18,27 @@ public class GameBoard {
 
     public int shipNumber = 5;
 
+    public void showConsoleBoard() {
+        int c0 = 0;
+
+        System.out.println("Y/X 0 1 2 3 4 5 6 7 8 9");
+
+        for (int row = 0; row < consoleBoard.length; row++) {
+
+            System.out.println(" ");
+            System.out.print(c0+":  ");
+            c0++;
+            for (int col = 0; col < consoleBoard.length; col++) {
+
+                System.out.print(consoleBoard[row][col] + " ");
+
+            }
+
+        }
+        System.out.println("");
+
+    }
+
     /** PlayerBoard**/
 
     public void createGameBoard() {
@@ -353,17 +374,8 @@ public class GameBoard {
             if (enemyBoard[playerMoveY][playerMoveX] == 1) {
 
                 consoleBoard[playerMoveY][playerMoveX] = 1;
-                for(int row = 0; row < consoleBoard.length; row++) { /** Schleife für die Anzeige der getroffenen Treffer als Array **/
+                showConsoleBoard();
 
-                    System.out.println("");
-
-                    for (int col = 0; col < consoleBoard.length; col++) {
-
-                        System.out.print(consoleBoard[row][col] + " ");
-
-                    }
-
-                }
                 System.out.println("");
 
                 System.out.println("HIT!!!");
