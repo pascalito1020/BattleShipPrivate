@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
         char mode;
@@ -18,16 +17,23 @@ public class Main {
         switch (mode) {
 
             case 'p':
-                System.out.println("Not available");
+
+                System.out.println("You are playing against another Player. Firstly, place your ships!");
+                game.createGameBoard();
+                game.showGameBoard();
+                game.placeShips();
+
+                /* WEITERES NOCH IN BEARBEITUNG */
+
                 break;
 
             case 'c':
-
-                //  game.createGameBoard();
-                game.showGameBoard();
-                game.placeShips();
-                game.createEnemyBoard();
-                // game.showEnemyBoard();
+                System.out.println("You are playing against a computer. Firstly, place your ships!");
+                game.createGameBoard();   /* Befüllt das leere Schlachtfeld mit 0ern */
+                game.showGameBoard();     /* Zeigt das eigene Schlachtfeld an */
+                game.placeShips();        /* Methode für das Platzieren der eignen Schiffe */
+                game.createEnemyBoard();  /* Generiert das Computer-Schlachtfeld */
+                //game.showEnemyBoard();  /* Zeigt das computer-generierte Schlachtfeld an */
 
                 while (true) {
 

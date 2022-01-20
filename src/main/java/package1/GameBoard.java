@@ -9,6 +9,8 @@ public class GameBoard {
 
     public int[][] playerBoard = new int[10][10];
 
+    public int[][] secondPlayerBoard = new int[10][10];
+
     public int[][] consoleBoard = new int[10][10]; /** Array für die Anzeige der getroffenen Treffer **/
 
     int playerHit=0;
@@ -21,7 +23,7 @@ public class GameBoard {
     public void showConsoleBoard() {
         int c0 = 0;
 
-        System.out.println("Y/X 0 1 2 3 4 5 6 7 8 9");
+        System.out.print("Y/X 0 1 2 3 4 5 6 7 8 9");
 
         for (int row = 0; row < consoleBoard.length; row++) {
 
@@ -94,7 +96,7 @@ public class GameBoard {
                 counterArray[3]--;
             }
 
-            System.out.println("Choose direction(u, d, l, r)");
+            System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
             choose = scanner.next().charAt(0);
 
             switch (choose) {
@@ -210,7 +212,7 @@ public class GameBoard {
 
         int c = 0;
 
-        System.out.println("Y/X 0 1 2 3 4 5 6 7 8 9");
+        System.out.print("Y/X 0 1 2 3 4 5 6 7 8 9");
 
         for (int row = 0; row < playerBoard.length; row++) {
 
