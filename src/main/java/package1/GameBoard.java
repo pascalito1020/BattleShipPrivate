@@ -89,6 +89,8 @@ public class GameBoard {
         int shipLength;
         char choose;
         int counter = 5;
+        boolean chooseRight=true;
+        boolean shipLengthRight=true;
 
         int []counterArray = new int[]{1, 1, 2, 1};
 
@@ -100,14 +102,24 @@ public class GameBoard {
 
             System.out.println("Ships left " + shipNumber);
             System.out.println("Choose your START POSITION! 10x10 FIELD");
-            System.out.println("Put number! (y- position 0-9)");
-            y1 = scanner.nextInt();
-            System.out.println("Put next number!(x- position 0-9)");
-            x1 = scanner.nextInt();
+
+            do {
+                System.out.println("Put number! (y- position 0-9)");
+                y1 = getInput();
+            } while( !isValidCoordinate(y1));
+
+            do {
+                System.out.println("Put number! (x- position 0-9)");
+                x1 = getInput();
+            } while( !isValidCoordinate(x1));
+
             playerBoard[y1][x1] = ship;
             showGameBoard(playerBoard);
-            System.out.println("Choose Ship length (5,4,3,2)");
-            shipLength = scanner.nextInt();
+            do {
+                System.out.println("Choose Ship length (5,4,3,2)");
+                shipLength = getInput();
+                if(shipLength<=5&&shipLength>2) shipLengthRight=false;
+            }while(shipLengthRight);
 
             if(shipLength == 5){    /** Counter für den Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
                 counterArray[0]--;
@@ -118,9 +130,11 @@ public class GameBoard {
             }else if(shipLength == 2) {
                 counterArray[3]--;
             }
-
-            System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
-            choose = scanner.next().charAt(0);
+            do {
+                System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
+                choose = scanner.next().charAt(0);
+                if(choose=='u'||choose=='d'||choose=='l'||choose=='r') chooseRight=false;
+            }while(chooseRight);
 
             switch (choose) {
                 case 'u':
@@ -263,6 +277,8 @@ public class GameBoard {
         int shipLength;
         char choose;
         int counter = 5;
+        boolean chooseRight=true;
+        boolean shipLengthRight=true;
 
         int []counterArray = new int[]{1, 1, 2, 1};
 
@@ -274,14 +290,24 @@ public class GameBoard {
 
             System.out.println("Ships left " + shipNumber);
             System.out.println("Choose your START POSITION! 10x10 FIELD");
-            System.out.println("Put number! (y- position 0-9)");
-            y1 = scanner.nextInt();
-            System.out.println("Put next number!(x- position 0-9)");
-            x1 = scanner.nextInt();
+
+            do {
+                System.out.println("Put number! (y- position 0-9)");
+                y1 = getInput();
+            } while( !isValidCoordinate(y1));
+
+            do {
+                System.out.println("Put number! (x- position 0-9)");
+                x1 = getInput();
+            } while( !isValidCoordinate(x1));
+
             secondPlayerBoard[y1][x1] = ship;
             showGameBoard(secondPlayerBoard);
-            System.out.println("Choose Ship length (5,4,3,2)");
-            shipLength = scanner.nextInt();
+            do {
+                System.out.println("Choose Ship length (5,4,3,2)");
+                shipLength = getInput();
+                if(shipLength<=5&&shipLength>2) shipLengthRight=false;
+            }while(shipLengthRight);
 
             if(shipLength == 5){    /** Counter für den Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
                 counterArray[0]--;
@@ -293,8 +319,11 @@ public class GameBoard {
                 counterArray[3]--;
             }
 
-            System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
-            choose = scanner.next().charAt(0);
+            do {
+                System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
+                choose = scanner.next().charAt(0);
+                if(choose=='u'||choose=='d'||choose=='l'||choose=='r') chooseRight=false;
+            }while(chooseRight);
 
             switch (choose) {
                 case 'u':
@@ -413,8 +442,6 @@ public class GameBoard {
 
         for(int tryagain = 0; tryagain < 1; tryagain++) {
 
-            Scanner scanner = new Scanner(System.in);
-
             do {
                 System.out.println("Player 1 should make his move ! (Y coordinate 0-9)");
                 playerMoveY = getInput();
@@ -438,7 +465,7 @@ public class GameBoard {
 
                 System.out.println("Player1 hits: " +playerHit+ " | Player2 Hits: " +enemyHit);
 
-                if(playerHit==3)break;
+                if(playerHit==17)break;
 
                 tryagain--;
 
@@ -460,8 +487,6 @@ public class GameBoard {
         int playerMoveX;
 
         for(int tryagain = 0; tryagain < 1; tryagain++) {
-
-            Scanner scanner = new Scanner(System.in);
 
             do {
                 System.out.println("Player 2 should make his move ! (Y coordinate 0-9)");
@@ -486,7 +511,7 @@ public class GameBoard {
 
                 System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
 
-                if(enemyHit==3)break;
+                if(enemyHit==17)break;
 
                 tryagain--;
 
@@ -633,10 +658,9 @@ public class GameBoard {
 
         for (int tryagain = 0; tryagain < 1; tryagain++) {
 
-            Scanner scanner = new Scanner(System.in);
 
             do {
-                System.out.println("Make your move! Enter y coordinate 0-9.");
+                System.out.println("Make your move! Enter Y coordinate 0-9.");
                 playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
 
@@ -658,7 +682,7 @@ public class GameBoard {
 
                 System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
 
-                if(playerHit==3)break;
+                if(playerHit==17)break;
 
                 tryagain--;
 
@@ -682,7 +706,7 @@ public class GameBoard {
                 System.out.println("You got hit!");
                 enemyHit++;
                 System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
-                if(enemyHit==3)break;
+                if(enemyHit==17)break;
                 tryagain--;
             }
             if (playerBoard[enemyMoveY][enemyMoveX] == 0) {

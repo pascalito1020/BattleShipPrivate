@@ -7,12 +7,16 @@ public class Main {
     public static void main(String[] args) {
 
         char mode;
+        boolean modeRight=true;
         GameBoard game = new GameBoard();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("----WELCOME TO BATTLESHIP----");
-        System.out.println("Choose (p) for Player vs. Player Mode");
-        System.out.println("Choose (c) for Player vs. Computer Mode");
-        mode = scanner.next().charAt(0);
+        do {
+            System.out.println("----WELCOME TO BATTLESHIP----");
+            System.out.println("Choose (p) for Player vs. Player Mode");
+            System.out.println("Choose (c) for Player vs. Computer Mode");
+            mode = scanner.next().charAt(0);
+            if(mode=='p'||mode=='c')modeRight=false;
+        }while(modeRight);
 
         switch (mode) {
 
@@ -31,7 +35,7 @@ public class Main {
                     game.showConsoleBoard();
                     game.playerVsPlayer1();
 
-                    if (game.getPlayerHit() == 3) {
+                    if (game.getPlayerHit() == 17) {
                         System.out.println("Player1 won!!!");
                         System.exit(0);
                     }
@@ -39,7 +43,7 @@ public class Main {
                     game.showConsoleBoard2();
                     game.playerVsPlayer2();
 
-                    if (game.getEnemyHit() == 3) {
+                    if (game.getEnemyHit() == 17) {
                         System.out.println("Player2 won!!!");
                         System.exit(0);
 
@@ -61,14 +65,14 @@ public class Main {
                     game.showConsoleBoard();
                     game.playerMove();
 
-                    if (game.getPlayerHit() == 3) {
+                    if (game.getPlayerHit() == 17) {
                         System.out.println("You won!!!");
                         System.exit(0);
                     }
 
                     game.enemyMove();
 
-                    if (game.getEnemyHit() == 3) {
+                    if (game.getEnemyHit() == 17) {
                         System.out.println("You lost!!!");
                         System.exit(0);
 
