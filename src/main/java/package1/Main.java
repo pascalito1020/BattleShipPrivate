@@ -18,19 +18,35 @@ public class Main {
 
             case 'p':
 
-               // System.out.println("You are playing against another Player. Firstly, place your ships!");
-               // game.createGameBoard();
-               // game.showGameBoard(game.playerBoard);
+                System.out.println("You are playing against another Player. Firstly, place your ships!");
+                game.createGameBoard();
+                game.showGameBoard(game.playerBoard);
                 game.placeShips();
                 System.out.println("Second Player should now place his ships!");
                 game.showGameBoard(game.secondPlayerBoard);
                 game.placeShips2();
-                game.showGameBoard(game.secondPlayerBoard);
 
+                while (true) {
 
-                /* WEITERES NOCH IN BEARBEITUNG */
+                    game.showConsoleBoard();
+                    game.playerVsPlayer1();
 
-                break;
+                    if (game.getPlayerHit() == 3) {
+                        System.out.println("Player1 won!!!");
+                        System.exit(0);
+                    }
+
+                    game.showConsoleBoard2();
+                    game.playerVsPlayer2();
+
+                    if (game.getEnemyHit() == 3) {
+                        System.out.println("Player2 won!!!");
+                        System.exit(0);
+
+                    }
+
+                }
+
 
             case 'c':
                 System.out.println("You are playing against a computer. Firstly, place your ships!");

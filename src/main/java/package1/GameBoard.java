@@ -12,6 +12,8 @@ public class GameBoard {
     public int[][] secondPlayerBoard = new int[10][10];
 
     public int[][] consoleBoard = new int[10][10]; /** Array für die Anzeige der getroffenen Treffer **/
+    public int[][] consoleBoard2 = new int[10][10]; /** Array für die Anzeige der getroffenen Treffer **/
+
 
     int playerHit=0;
     int enemyHit=0;
@@ -33,6 +35,27 @@ public class GameBoard {
             for (int col = 0; col < consoleBoard.length; col++) {
 
                 System.out.print(consoleBoard[row][col] + " ");
+
+            }
+
+        }
+        System.out.println("");
+
+    }
+
+    public void showConsoleBoard2() {
+        int c0 = 0;
+
+        System.out.print("Y/X 0 1 2 3 4 5 6 7 8 9");
+
+        for (int row = 0; row < consoleBoard2.length; row++) {
+
+            System.out.println(" ");
+            System.out.print(c0+":  ");
+            c0++;
+            for (int col = 0; col < consoleBoard2.length; col++) {
+
+                System.out.print(consoleBoard2[row][col] + " ");
 
             }
 
@@ -383,6 +406,103 @@ public class GameBoard {
 
     }
 
+    public void playerVsPlayer1() {
+
+        int playerMoveY;
+        int playerMoveX;
+
+        for(int tryagain = 0; tryagain < 1; tryagain++) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            do {
+                System.out.println("Player 1 should make his move ! (Y coordinate 0-9)");
+                playerMoveY = getInput();
+            } while( !isValidCoordinate(playerMoveY));
+
+            do {
+                System.out.println("Player 1 should make his move ! (X coordinate 0-9)");
+                playerMoveX = getInput();
+            } while( !isValidCoordinate(playerMoveX));
+
+            if (secondPlayerBoard[playerMoveY][playerMoveX] == 1) {
+
+                consoleBoard[playerMoveY][playerMoveX] = 1;
+                showConsoleBoard();
+
+                System.out.println("");
+
+                System.out.println("HIT!!!");
+
+                playerHit++;
+
+                System.out.println("Player1 hits: " +playerHit+ " | Player2 Hits: " +enemyHit);
+
+                if(playerHit==3)break;
+
+                tryagain--;
+
+            }
+
+            if (secondPlayerBoard[playerMoveY][playerMoveX] == 0) {
+                System.out.println("No hit.");
+
+            }
+
+        }
+
+
+    }
+
+    public void playerVsPlayer2() {
+
+        int playerMoveY;
+        int playerMoveX;
+
+        for(int tryagain = 0; tryagain < 1; tryagain++) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            do {
+                System.out.println("Player 2 should make his move ! (Y coordinate 0-9)");
+                playerMoveY = getInput();
+            } while( !isValidCoordinate(playerMoveY));
+
+            do {
+                System.out.println("Player 2 should make his move ! (X coordinate 0-9)");
+                playerMoveX = getInput();
+            } while( !isValidCoordinate(playerMoveX));
+
+            if (playerBoard[playerMoveY][playerMoveX] == 1) {
+
+                consoleBoard2[playerMoveY][playerMoveX] = 1;
+                showConsoleBoard2();
+
+                System.out.println("");
+
+                System.out.println("HIT!!!");
+
+                enemyHit++;
+
+                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
+
+                if(enemyHit==3)break;
+
+                tryagain--;
+
+            }
+
+            if (playerBoard[playerMoveY][playerMoveX] == 0) {
+                System.out.println("No hit.");
+
+            }
+
+        }
+
+
+    }
+
+
     /** EnemyBoard **/
 
     public void createEnemyBoard() {
@@ -546,6 +666,7 @@ public class GameBoard {
 
             if (enemyBoard[playerMoveY][playerMoveX] == 0) {
                 System.out.println("No hit.");
+
             }
         }
     }
