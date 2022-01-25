@@ -553,8 +553,8 @@ public class GameBoard {
 
             }
 
-            random1 = zufall.nextInt(9); /** Erstellung des 2er Schiffs**/
-            random2 = zufall.nextInt(9);
+            random1 = zufall.nextInt(10); /** Erstellung des 2er Schiffs**/
+            random2 = zufall.nextInt(10);
 
 
             if (random1 + 2 > 9) {
@@ -569,8 +569,8 @@ public class GameBoard {
             }
 
 
-            random1 = zufall.nextInt(9); /** Erstellung des 5er Schiff **/
-            random2 = zufall.nextInt(9);
+            random1 = zufall.nextInt(10); /** Erstellung des 5er Schiff **/
+            random2 = zufall.nextInt(10);
 
             if (random1 + 5 > 9) {
 
@@ -587,8 +587,8 @@ public class GameBoard {
             for (int u = 0; u < 2; u++) { /** Schleife für die Erstellung von 2 3er Schiffe **/
 
 
-                random1 = zufall.nextInt(9);
-                random2 = zufall.nextInt(9);
+                random1 = zufall.nextInt(10);
+                random2 = zufall.nextInt(10);
 
                 if (random2 - 3 < 0) {
 
@@ -605,8 +605,8 @@ public class GameBoard {
 
             }
 
-            random1 = zufall.nextInt(9); /** Erstellung von 4er Schiff **/
-            random2 = zufall.nextInt(9);
+            random1 = zufall.nextInt(10); /** Erstellung von 4er Schiff **/
+            random2 = zufall.nextInt(10);
 
             if (random2 - 4 < 0) {
 
@@ -699,8 +699,8 @@ public class GameBoard {
 
         for (int tryagain = 0; tryagain < 1; tryagain++) {
             Random enemyTry = new Random();
-            int enemyMoveY = enemyTry.nextInt(9);
-            int enemyMoveX = enemyTry.nextInt(9);
+            int enemyMoveY = enemyTry.nextInt(10);
+            int enemyMoveX = enemyTry.nextInt(10);
 
             if (playerBoard[enemyMoveY][enemyMoveX] == 1) {
                 System.out.println("You got hit!");
@@ -717,7 +717,7 @@ public class GameBoard {
 
     }
 
-    /** Getter **/
+
 
     private boolean isValidCoordinate(int userInput){
         if (userInput > 9 || userInput < 0){
@@ -739,6 +739,8 @@ public class GameBoard {
         }
         return num;
     }
+
+    /** Getter **/
 
     public int getPlayerHit() {
         return playerHit;
