@@ -12,8 +12,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("----WELCOME TO BATTLESHIP----");
-            System.out.println("Choose (p) for Player vs. Player Mode");
-            System.out.println("Choose (c) for Player vs. Computer Mode");
+            System.out.println("Type 'P' for Player vs. Player Mode");
+            System.out.println("Type 'C' for Player vs. Computer Mode");
             mode = scanner.next().charAt(0);
             if(mode=='p'||mode=='c')modeRight=false;
         }while(modeRight);
@@ -22,7 +22,7 @@ public class Main {
 
             case 'p':
 
-                System.out.println("You are playing against another Player. Firstly, place your ships!");
+                System.out.println("You are playing against another Player. To begin, place your ships!");
                 game.createGameBoard();
                 game.showGameBoard(game.playerBoard);
                 game.placeShips();
@@ -53,7 +53,7 @@ public class Main {
 
 
             case 'c':
-                System.out.println("You are playing against a computer. Firstly, place your ships!");
+                System.out.println("You are playing against a computer. To begin, place your ships!");
                 game.createGameBoard();   /* Befüllt das leere Schlachtfeld mit 0ern */
                 game.showGameBoard(game.playerBoard);     /* Zeigt das eigene Schlachtfeld an */
                 game.placeShips();        /* Methode für das Platzieren der eignen Schiffe */
@@ -66,14 +66,14 @@ public class Main {
                     game.playerMove();
 
                     if (game.getPlayerHit() == 17) {
-                        System.out.println("You won!!!");
+                        System.out.println("VICTORY!");
                         System.exit(0);
                     }
 
                     game.enemyMove();
 
                     if (game.getEnemyHit() == 17) {
-                        System.out.println("You lost!!!");
+                        System.out.println("DEFEAT!");
                         System.exit(0);
 
                     }
@@ -81,7 +81,7 @@ public class Main {
                 }
 
             default:
-                System.out.println("Not an option");
+                System.out.println("Not an option.");
                 break;
 
 

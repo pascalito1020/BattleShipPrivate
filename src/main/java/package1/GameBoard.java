@@ -101,22 +101,22 @@ public class GameBoard {
             System.out.println("You are able to place "+ counterArray[0] +"x 5 SHIP, " + counterArray[1] +"x 4 SHIP, "+ counterArray[2] +"x 3 SHIP and " + counterArray[3] +"x 2 SHIP");
 
             System.out.println("Ships left " + shipNumber);
-            System.out.println("Choose your START POSITION! 10x10 FIELD");
+            System.out.println("Choose your STARTING POSITION! (10x10 FIELD)");
 
             do {
-                System.out.println("Put number! (y- position 0-9)");
+                System.out.println("Please enter a number to set Y-coordinate! (Pick number between 0-9)");
                 y1 = getInput();
             } while( !isValidCoordinate(y1));
 
             do {
-                System.out.println("Put number! (x- position 0-9)");
+                System.out.println("Please enter a number to set X-coordinate! (Pick number between 0-9)");
                 x1 = getInput();
             } while( !isValidCoordinate(x1));
 
             playerBoard[y1][x1] = ship;
             showGameBoard(playerBoard);
             do {
-                System.out.println("Choose Ship length (5,4,3,2)");
+                System.out.println("Choose SHIP LENGTH ( 5 | 4 | 3 | 2 )");
                 shipLength = getInput();
                 if(shipLength<=5&&shipLength>2) shipLengthRight=false;
             }while(shipLengthRight);
@@ -131,7 +131,7 @@ public class GameBoard {
                 counterArray[3]--;
             }
             do {
-                System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
+                System.out.println("Choose the direction of the SHIP ( U (up), D (down), L (left), R (right) )");
                 choose = scanner.next().charAt(0);
                 if(choose=='u'||choose=='d'||choose=='l'||choose=='r') chooseRight=false;
             }while(chooseRight);
@@ -139,7 +139,7 @@ public class GameBoard {
             switch (choose) {
                 case 'u':
                     if (y1 + 1 - shipLength < 0) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         playerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -164,7 +164,7 @@ public class GameBoard {
                 case 'd':
 
                     if (y1 - 1 + shipLength > 9) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         playerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -189,7 +189,7 @@ public class GameBoard {
                 case 'l':
 
                     if (x1 + 1 - shipLength < 0) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         playerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -214,7 +214,7 @@ public class GameBoard {
                 case 'r':
 
                     if (x1 - 1 + shipLength > 9) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         playerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -289,27 +289,27 @@ public class GameBoard {
             System.out.println("You are able to place "+ counterArray[0] +"x 5 SHIP, " + counterArray[1] +"x 4 SHIP, "+ counterArray[2] +"x 3 SHIP and " + counterArray[3] +"x 2 SHIP");
 
             System.out.println("Ships left " + shipNumber);
-            System.out.println("Choose your START POSITION! 10x10 FIELD");
+            System.out.println("Choose your STARTING POSITION! (10x10 FIELD)");
 
             do {
-                System.out.println("Put number! (y- position 0-9)");
+                System.out.println("Please enter a number to set Y-coordinate! Enter a number between 0-9)!");
                 y1 = getInput();
             } while( !isValidCoordinate(y1));
 
             do {
-                System.out.println("Put number! (x- position 0-9)");
+                System.out.println("Please enter a number to set X-coordinate! Enter a number between 0-9)!");
                 x1 = getInput();
             } while( !isValidCoordinate(x1));
 
             secondPlayerBoard[y1][x1] = ship;
             showGameBoard(secondPlayerBoard);
             do {
-                System.out.println("Choose Ship length (5,4,3,2)");
+                System.out.println("Choose SHIP LENGTH ( 5 | 4 | 3 | 2 )");
                 shipLength = getInput();
                 if(shipLength<=5&&shipLength>2) shipLengthRight=false;
             }while(shipLengthRight);
 
-            if(shipLength == 5){    /** Counter für den Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
+            if(shipLength == 5){    /** Counter für die Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
                 counterArray[0]--;
             }else if(shipLength == 4) {
                 counterArray[1]--;
@@ -320,7 +320,7 @@ public class GameBoard {
             }
 
             do {
-                System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
+                System.out.println("Choose the direction of the SHIP ( U (up), D (down), L (left), R (right) )");
                 choose = scanner.next().charAt(0);
                 if(choose=='u'||choose=='d'||choose=='l'||choose=='r') chooseRight=false;
             }while(chooseRight);
@@ -328,7 +328,7 @@ public class GameBoard {
             switch (choose) {
                 case 'u':
                     if (y1 + 1 - shipLength < 0) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         secondPlayerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -353,7 +353,7 @@ public class GameBoard {
                 case 'd':
 
                     if (y1 - 1 + shipLength > 9) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         secondPlayerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -378,7 +378,7 @@ public class GameBoard {
                 case 'l':
 
                     if (x1 + 1 - shipLength < 0) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         secondPlayerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -403,7 +403,7 @@ public class GameBoard {
                 case 'r':
 
                     if (x1 - 1 + shipLength > 9) {
-                        System.out.println("Cant be placed like that!");
+                        System.out.println("This ship CAN'T be placed like that!");
                         secondPlayerBoard[y1][x1] = water;
                         if(shipLength == 5){
                             counterArray[0]++;
@@ -443,12 +443,12 @@ public class GameBoard {
         for(int tryagain = 0; tryagain < 1; tryagain++) {
 
             do {
-                System.out.println("Player 1 should make his move ! (Y coordinate 0-9)");
+                System.out.println("Player 1: Please make a move! Y-coordinate 0-9)");
                 playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
 
             do {
-                System.out.println("Player 1 should make his move ! (X coordinate 0-9)");
+                System.out.println("Player 1: Please make a move! (X-coordinate 0-9)");
                 playerMoveX = getInput();
             } while( !isValidCoordinate(playerMoveX));
 
@@ -463,7 +463,7 @@ public class GameBoard {
 
                 playerHit++;
 
-                System.out.println("Player1 hits: " +playerHit+ " | Player2 Hits: " +enemyHit);
+                System.out.println("Player1 hit(s): " +playerHit+ " | Player2 hit(s): " +enemyHit);
 
                 if(playerHit==17)break;
 
@@ -472,7 +472,7 @@ public class GameBoard {
             }
 
             if (secondPlayerBoard[playerMoveY][playerMoveX] == 0) {
-                System.out.println("No hit.");
+                System.out.println("MISS...");
 
             }
 
@@ -489,12 +489,12 @@ public class GameBoard {
         for(int tryagain = 0; tryagain < 1; tryagain++) {
 
             do {
-                System.out.println("Player 2 should make his move ! (Y coordinate 0-9)");
+                System.out.println("Player 2: Please make a move! (Y-coordinate 0-9)");
                 playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
 
             do {
-                System.out.println("Player 2 should make his move ! (X coordinate 0-9)");
+                System.out.println("Player 2: Please make a move! (X-coordinate 0-9)");
                 playerMoveX = getInput();
             } while( !isValidCoordinate(playerMoveX));
 
@@ -509,7 +509,7 @@ public class GameBoard {
 
                 enemyHit++;
 
-                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
+                System.out.println("Player hit(s): " +playerHit+ " | Enemy hit(s): " +enemyHit);
 
                 if(enemyHit==17)break;
 
@@ -518,7 +518,7 @@ public class GameBoard {
             }
 
             if (playerBoard[playerMoveY][playerMoveX] == 0) {
-                System.out.println("No hit.");
+                System.out.println("MISS...");
 
             }
 
@@ -660,12 +660,12 @@ public class GameBoard {
 
 
             do {
-                System.out.println("Make your move! Enter Y coordinate 0-9.");
+                System.out.println("Please make your move! Enter Y-coordinate between 0-9.");
                 playerMoveY = getInput();
             } while( !isValidCoordinate(playerMoveY));
 
             do {
-                System.out.println("Make your move! Enter X coordinate 0-9.");
+                System.out.println("Please make your move! Enter X-coordinate between 0-9.");
                 playerMoveX = getInput();
             } while( !isValidCoordinate(playerMoveX));
 
@@ -680,7 +680,7 @@ public class GameBoard {
 
                 playerHit++;
 
-                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
+                System.out.println("Player hit(s): " +playerHit+ " | Enemy hit(s): " +enemyHit);
 
                 if(playerHit==17)break;
 
@@ -689,7 +689,7 @@ public class GameBoard {
             }
 
             if (enemyBoard[playerMoveY][playerMoveX] == 0) {
-                System.out.println("No hit.");
+                System.out.println("MISS...");
 
             }
         }
@@ -705,7 +705,7 @@ public class GameBoard {
             if (playerBoard[enemyMoveY][enemyMoveX] == 1) {
                 System.out.println("You got hit!");
                 enemyHit++;
-                System.out.println("Player hits: " +playerHit+ " | Enemy Hits: " +enemyHit);
+                System.out.println("Player hit(s): " +playerHit+ " | Enemy hit(s): " +enemyHit);
                 if(enemyHit==17)break;
                 tryagain--;
             }
@@ -721,7 +721,7 @@ public class GameBoard {
 
     private boolean isValidCoordinate(int userInput){
         if (userInput > 9 || userInput < 0){
-            System.out.println("Try again");
+            System.out.println("Please try again!");
             return false;
         }
         else return true;
