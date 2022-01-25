@@ -79,13 +79,6 @@ public class Main {
                     }
 
                 }
-
-            default:
-                System.out.println("Not an option.");
-                break;
-
-
-
         }
 
 
