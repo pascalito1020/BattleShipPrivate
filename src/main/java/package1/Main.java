@@ -18,10 +18,15 @@ public class Main {
 
             case 'p':
 
-                System.out.println("You are playing against another Player. Firstly, place your ships!");
-                game.createGameBoard();
-                game.showGameBoard();
+               // System.out.println("You are playing against another Player. Firstly, place your ships!");
+               // game.createGameBoard();
+               // game.showGameBoard(game.playerBoard);
                 game.placeShips();
+                System.out.println("Second Player should now place his ships!");
+                game.showGameBoard(game.secondPlayerBoard);
+                game.placeShips2();
+                game.showGameBoard(game.secondPlayerBoard);
+
 
                 /* WEITERES NOCH IN BEARBEITUNG */
 
@@ -30,7 +35,7 @@ public class Main {
             case 'c':
                 System.out.println("You are playing against a computer. Firstly, place your ships!");
                 game.createGameBoard();   /* Befüllt das leere Schlachtfeld mit 0ern */
-                game.showGameBoard();     /* Zeigt das eigene Schlachtfeld an */
+                game.showGameBoard(game.playerBoard);     /* Zeigt das eigene Schlachtfeld an */
                 game.placeShips();        /* Methode für das Platzieren der eignen Schiffe */
                 game.createEnemyBoard();  /* Generiert das Computer-Schlachtfeld */
                 //game.showEnemyBoard();  /* Zeigt das computer-generierte Schlachtfeld an */
@@ -56,7 +61,9 @@ public class Main {
                 }
 
             default:
+                System.out.println("Not an option");
                 break;
+
 
 
         }

@@ -82,7 +82,7 @@ public class GameBoard {
             System.out.println("Put next number!(x- position 0-9)");
             x1 = scanner.nextInt();
             playerBoard[y1][x1] = ship;
-            showGameBoard();
+            showGameBoard(playerBoard);
             System.out.println("Choose Ship length (5,4,3,2)");
             shipLength = scanner.nextInt();
 
@@ -119,7 +119,7 @@ public class GameBoard {
                         playerBoard[y1 - i][x1] = playerBoard[y1][x1];
                     }
 
-                    showGameBoard();
+                    showGameBoard(playerBoard);
                     shipNumber--;
                     counter--;
                     break;
@@ -144,7 +144,7 @@ public class GameBoard {
                         playerBoard[y1 + i][x1] = playerBoard[y1][x1];
                     }
 
-                    showGameBoard();
+                    showGameBoard(playerBoard);
                     shipNumber--;
                     counter--;
                     break;
@@ -169,7 +169,7 @@ public class GameBoard {
                         playerBoard[y1][x1 - i] = playerBoard[y1][x1];
                     }
 
-                    showGameBoard();
+                    showGameBoard(playerBoard);
                     shipNumber--;
                     counter--;
                     break;
@@ -195,7 +195,7 @@ public class GameBoard {
                         playerBoard[y1][x1 + i] = playerBoard[y1][x1];
                     }
 
-                    showGameBoard();
+                    showGameBoard(playerBoard);
                     shipNumber--;
                     counter--;
                     break;
@@ -208,20 +208,20 @@ public class GameBoard {
 
     } /** Methode für das Befüllen des PlayerBoard Arrays mit eigenen Schiffen **/
 
-    public void showGameBoard() {
+    public void showGameBoard(int[][] arrayP) {
 
         int c = 0;
 
         System.out.print("Y/X 0 1 2 3 4 5 6 7 8 9");
 
-        for (int row = 0; row < playerBoard.length; row++) {
+        for (int row = 0; row < arrayP.length; row++) {
 
             System.out.println(" ");
             System.out.print(c+":  ");
             c++;
-            for (int col = 0; col < playerBoard.length; col++) {
+            for (int col = 0; col < arrayP.length; col++) {
 
-                System.out.print(playerBoard[row][col] + " ");
+                System.out.print(arrayP[row][col] + " ");
 
             }
 
@@ -229,7 +229,159 @@ public class GameBoard {
         }
         System.out.println("");
 
-    } /** Gibt das PlayerBoard aus **/
+    } /** Gibt das GameBoard aus **/
+
+    public void placeShips2() {
+
+        shipNumber = 5;
+
+        int y1;
+        int x1;
+        int shipLength;
+        char choose;
+        int counter = 5;
+
+        int []counterArray = new int[]{1, 1, 2, 1};
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (counter > 0) {
+
+            System.out.println("You are able to place "+ counterArray[0] +"x 5 SHIP, " + counterArray[1] +"x 4 SHIP, "+ counterArray[2] +"x 3 SHIP and " + counterArray[3] +"x 2 SHIP");
+
+            System.out.println("Ships left " + shipNumber);
+            System.out.println("Choose your START POSITION! 10x10 FIELD");
+            System.out.println("Put number! (y- position 0-9)");
+            y1 = scanner.nextInt();
+            System.out.println("Put next number!(x- position 0-9)");
+            x1 = scanner.nextInt();
+            secondPlayerBoard[y1][x1] = ship;
+            showGameBoard(secondPlayerBoard);
+            System.out.println("Choose Ship length (5,4,3,2)");
+            shipLength = scanner.nextInt();
+
+            if(shipLength == 5){    /** Counter für den Anzeige, welche Schiffe man noch platzieren kann und welche nicht (siehe 1. System.out.println **/
+                counterArray[0]--;
+            }else if(shipLength == 4) {
+                counterArray[1]--;
+            }else if(shipLength == 3) {
+                counterArray[2]--;
+            }else if(shipLength == 2) {
+                counterArray[3]--;
+            }
+
+            System.out.println("Choose direction(u (up), d (down), l (left), r (right)");
+            choose = scanner.next().charAt(0);
+
+            switch (choose) {
+                case 'u':
+                    if (y1 + 1 - shipLength < 0) {
+                        System.out.println("Cant be placed like that!");
+                        secondPlayerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
+                        break;
+                    }
+                    for (int i = 0; i < shipLength; i++) {
+                        secondPlayerBoard[y1 - i][x1] = secondPlayerBoard[y1][x1];
+                    }
+
+                    showGameBoard(secondPlayerBoard);
+                    shipNumber--;
+                    counter--;
+                    break;
+
+                case 'd':
+
+                    if (y1 - 1 + shipLength > 9) {
+                        System.out.println("Cant be placed like that!");
+                        secondPlayerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
+                        break;
+                    }
+                    for (int i = 0; i < shipLength; i++) {
+                        secondPlayerBoard[y1 + i][x1] = secondPlayerBoard[y1][x1];
+                    }
+
+                    showGameBoard(secondPlayerBoard);
+                    shipNumber--;
+                    counter--;
+                    break;
+
+                case 'l':
+
+                    if (x1 + 1 - shipLength < 0) {
+                        System.out.println("Cant be placed like that!");
+                        secondPlayerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
+                        break;
+                    }
+                    for (int i = 0; i < shipLength; i++) {
+                        secondPlayerBoard[y1][x1 - i] = secondPlayerBoard[y1][x1];
+                    }
+
+                    showGameBoard(secondPlayerBoard);
+                    shipNumber--;
+                    counter--;
+                    break;
+
+                case 'r':
+
+                    if (x1 - 1 + shipLength > 9) {
+                        System.out.println("Cant be placed like that!");
+                        secondPlayerBoard[y1][x1] = water;
+                        if(shipLength == 5){
+                            counterArray[0]++;
+                        }else if(shipLength == 4) {
+                            counterArray[1]++;
+                        }else if(shipLength == 3) {
+                            counterArray[2]++;
+                        }else if(shipLength == 2) {
+                            counterArray[3]++;
+                        }
+                        break;
+                    }
+
+                    for (int i = 0; i < shipLength; i++) {
+                        secondPlayerBoard[y1][x1 + i] = secondPlayerBoard[y1][x1];
+                    }
+
+                    showGameBoard(secondPlayerBoard);
+                    shipNumber--;
+                    counter--;
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+
+    }
 
     /** EnemyBoard **/
 
